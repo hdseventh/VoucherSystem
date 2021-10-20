@@ -64,11 +64,19 @@ namespace VoucherSystem
 					}
 					else
 					{
-						player.SendErrorMessage("Failed to add the new voucher. Check logs for more info.");
+						player.SendErrorMessage("Failed adding the new voucher. Check logs for more info.");
 					}
 					break;
 				case "del":
-					//del placeholder
+					if (args.Parameters.Count < 2)
+					{
+						player.SendErrorMessage("Invalid syntax! Proper syntax: {0}voucher del <voucherid>", Commands.Specifier);
+						return;
+					}
+					if (vsystem.DeleteVoucher(args.Parameters[1]))
+						player.SendSuccessMessage("Deleted voucher with ID {0}.", args.Parameters[1]);
+					else
+						player.SendErrorMessage("Failed deleting voucher with ID {0}. Check logs for more info.", args.Parameters[1]);
 					break;
             }
 
