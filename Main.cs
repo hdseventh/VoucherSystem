@@ -35,24 +35,41 @@ namespace VoucherSystem
 				args.Player.SendInfoMessage("{0}voucher claim <serialnumber> - Claim a voucher.", Commands.Specifier);
 				if (args.Player.HasPermission("vsystem.admin"))
 				{
-					args.Player.SendInfoMessage("{0}voucher add - Add a voucher.", Commands.Specifier);
+					args.Player.SendInfoMessage("{0}voucher add <serialnumber> <reward> <expiration> - Add a voucher.", Commands.Specifier);
 					args.Player.SendInfoMessage("{0}voucher del <voucherid> - Delete a voucher.", Commands.Specifier);
 				}
 				return;
 			}
-
 			string subcmd = args.Parameters[0].ToLower();
 			switch (subcmd)
             {
 				case "claim":
 					//claim placeholder
-					return;
+					break;
 				case "add":
-					//add placeholder
-					return;
+					if (args.Parameters.Count < 3)
+					{
+						player.SendErrorMessage("Invalid syntax! Proper syntax: {0}voucher add <serialnumber> <reward> <expiration>", Commands.Specifier);
+						return;
+					}
+					DateTime expiration = DateTime.MaxValue;
+					if (TShock.Utils.TryParseTime(args.Parameters[4], out int seconds))
+					{
+						expiration = DateTime.UtcNow.AddSeconds(seconds);
+					}
+
+					if (vsystem.AddVoucher(args.Parameters[1], args.Parameters[2], args.Player.Name, "", expiration))
+					{
+						player.SendSuccessMessage("Successfully added a new voucher.");
+					}
+					else
+					{
+						player.SendErrorMessage("Failed to add the new voucher. Check logs for more info.");
+					}
+					break;
 				case "del":
 					//del placeholder
-					return;
+					break;
             }
 
 		}

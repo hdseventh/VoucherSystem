@@ -52,6 +52,9 @@
     <Reference Include="TShockAPI">
       <HintPath>..\..\backup\ServerPlugins\TShockAPI.dll</HintPath>
     </Reference>
+    <Reference Include="Wolfje.Plugins.SEconomy">
+      <HintPath>..\..\backup\ServerPlugins\Wolfje.Plugins.SEconomy.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBManager.cs" />

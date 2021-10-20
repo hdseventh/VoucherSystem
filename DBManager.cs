@@ -43,10 +43,10 @@ namespace VoucherSystem
                 new SqlColumn("Reward", MySqlDbType.Text),
                 new SqlColumn("CreatedBy", MySqlDbType.Text),
                 new SqlColumn("ClaimedBy", MySqlDbType.Text),
-                new SqlColumn("Expiration", MySqlDbType.Text)));
+                new SqlColumn("Expiration", MySqlDbType.DateTime)));
         }
 
-        public bool AddVoucher(string serialnum, string reward, string author, string claimer, string expire)
+        public bool AddVoucher(string serialnum, string reward, string author, string claimer, DateTime expire)
         {
             try
             {
