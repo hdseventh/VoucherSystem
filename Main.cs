@@ -85,6 +85,12 @@ namespace VoucherSystem
 
                     break;
                 case "add":
+                    if (!args.Player.HasPermission("vsystem.admin"))
+                    {
+                        player.SendErrorMessage("You don't have permission to use this command!");
+                        return;
+                    }
+           
                     if (args.Parameters.Count < 3)
                     {
                         player.SendErrorMessage("Invalid syntax! Proper syntax: {0}voucher add <serialnumber> <reward> <expiration>", Commands.Specifier);
@@ -115,6 +121,12 @@ namespace VoucherSystem
                     }
                     break;
                 case "del":
+                    if (!args.Player.HasPermission("vsystem.admin"))
+                    {
+                        player.SendErrorMessage("You don't have permission to use this command!");
+                        return;
+                    }
+
                     if (args.Parameters.Count < 2)
                     {
                         player.SendErrorMessage("Invalid syntax! Proper syntax: {0}voucher del <voucherid>", Commands.Specifier);
@@ -126,6 +138,12 @@ namespace VoucherSystem
                         player.SendErrorMessage("Failed deleting voucher with ID {0}. Check logs for more info.", args.Parameters[1]);
                     break;
                 case "list":
+                    if (!args.Player.HasPermission("vsystem.admin"))
+                    {
+                        player.SendErrorMessage("You don't have permission to use this command!");
+                        return;
+                    }
+
                     int pagenumber;
                     if (!PaginationTools.TryParsePageNumber(args.Parameters, 1, args.Player, out pagenumber))
                         return;
