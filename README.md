@@ -8,7 +8,7 @@ A VoucherSystem for TShock, SEconomy plugin required for it to work.
 ## Commands
 - `/voucher [parameters]` `Permission Required : vsystem.use`  Main command.
 
-##Parameters
+## Parameters
 - `claim <serialnumber>` `Permission Required : vsystem.use`  Claim an active voucher.
 - `add <serialnumber> <rewardamount> <expiration>` `Permission Required : vsystem.admin`  Create a Voucher.
 - `del <voucherid>` `Permission Required : vsystem.admin`  Delete an active and claimed voucher.
