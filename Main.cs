@@ -15,7 +15,7 @@ namespace VoucherSystem
         public override string Author => "hdseventh";
         public override string Description => "Voucher system for TShock";
         public override string Name => "Voucher System";
-        public override Version Version { get { return new Version(1, 0, 0, 0); } }
+        public override Version Version { get { return new Version(1, 0, 1, 0); } }
         public VoucherSystem(Main game) : base(game) { }
 
         private DBManager vsystem;
