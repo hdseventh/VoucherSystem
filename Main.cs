@@ -85,9 +85,12 @@ namespace VoucherSystem
                         return;
                     }
                     DateTime expiration = DateTime.MaxValue;
-                    if (TShock.Utils.TryParseTime(args.Parameters[3], out int seconds))
+                    if (args.Parameters.Count > 3)
                     {
-                        expiration = DateTime.UtcNow.AddSeconds(seconds);
+                        if (TShock.Utils.TryParseTime(args.Parameters[3], out int seconds))
+                        {
+                            expiration = DateTime.UtcNow.AddSeconds(seconds);
+                        }
                     }
 
                     if (!int.TryParse(args.Parameters[2], out int result))
