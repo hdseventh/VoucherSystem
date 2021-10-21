@@ -120,18 +120,12 @@ namespace VoucherSystem
                         player.SendErrorMessage("Failed deleting voucher with ID {0}. Check logs for more info.", args.Parameters[1]);
                     break;
                 case "list":
-                    // integrate pagination tool
                     int pagenumber;
                     if (!PaginationTools.TryParsePageNumber(args.Parameters, 1, args.Player, out pagenumber))
                         return;
-
-                    // fetch only ranges from the list
                     List<VoucherSystems> list = vsystem.GetVoucherList();
                     var namelist = from vouchers in list
                                    select vouchers.SerialNumber;
-
-
-                    // show data from user's specified page
                     PaginationTools.SendPage(player, pagenumber, PaginationTools.BuildLinesFromTerms(namelist),
                             new PaginationTools.Settings
                             {
