@@ -66,6 +66,12 @@ namespace VoucherSystem
                         return;
                     }
 
+                    if (DateTime.Parse(vlist.Expiration) < DateTime.UtcNow)
+                    {
+                        player.SendErrorMessage("Voucher has expired.");
+                        return;
+                    }
+
                     if (SEconomyPlugin.Instance != null)
                     {
                         var playerBankAccount = SEconomyPlugin.Instance.GetBankAccount(player);
